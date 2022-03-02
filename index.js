@@ -97,7 +97,8 @@ var firebaseConfig = {
   
       // DOne
       alert('User Logged In!!')
-      window.location.href = 'C:/Users/Alexis/Desktop/Projet serre/test/serre/serre.html';
+      locationObj = document.location
+      document.location = 'http://www.mozilla.org'
   
     })
     .catch(function(error) {
