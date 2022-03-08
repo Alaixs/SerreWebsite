@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <title>Connexion - Serre connectée</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="./style.css">
+
+      </head>
+      <body>
+           <div id="content_container">
+              <div id="form_container">
+                  <div id="form_header_container">
+                      <h2 id="form_header">Connexion</h2>
+                  </div>
+
+                  <div id="form_content_container">
+                    <div id="form_content_inner_container">
+                        <p>
+                            <input type="email" id="email" name="email" placeholder="Adresse Mail" required><i class="validation"><span></span><span></span></i>
+                        </p>
+                        <p>
+                            <input type="password" id="password" name="pasword" placeholder="Mot de passe" required><i class="validation"><span></span><span></span></i>
+                        </p>
+                        <p>
+                            <div id="button_container">
+                                <button onclick="login()">Login</button>
+                                  </div>
+
+                    </div> <!-- id="form_content_inner_container" -->
+                  </div> <!-- id="form_content_container" -->
+              </div> <!-- id="form_container" -->
+            </div> <!-- id="content_container" -->
+    </p>
+  </form>
+  <div id="create-account-wrap">
+    <p>Pas encore membre ?<a href="M:\PROJET\WebSite\Register\Register.html">Crèe un compte</a>
+      <p>
+  </div><!--create-account-wrap-->
+</div>
+</div>
+</div>
+  
+</body>
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script src="index.js"></script>
+</html>
