@@ -1,147 +1,158 @@
-// Your web app's Firebase configuration
-var firebaseConfig = {
-    apiKey: "AIzaSyCm80kk5P_7arFyh-p2WXIGnAkbzppwIr8",
-    authDomain: "formlogin-64299.firebaseapp.com",
-    projectId: "formlogin-64299",
-    storageBucket: "formlogin-64299.appspot.com",
-    messagingSenderId: "670700686896",
-    appId: "1:670700686896:web:d5abfe5d4c4ac6380ce7f5"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  // Initialize variables
-  const auth = firebase.auth()
-  const database = firebase.database()
+var pwd = document.getElementById('pwd');
+var eye = document.getElementById('eye');
+
+eye.addEventListener('click',togglePass);
+
+function togglePass(){
+
+   eye.classList.toggle('active');
+
+   (pwd.type == 'password') ? pwd.type = 'text' : pwd.type = 'password';
+}
+
+// Form Validation
+
+function checkStuff() {
+  var email = document.form1.email;
+  var password = document.form1.password;
+  var msg = document.getElementById('msg');
   
-  // Set up our register function
-  function register () {
-    // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-    full_name = document.getElementById('full_name').value
-    favourite_song = document.getElementById('favourite_song').value
-    milk_before_cereal = document.getElementById('milk_before_cereal').value
+  if (email.value == "") {
+    msg.style.display = 'block';
+    msg.innerHTML = "Please enter your email";
+    email.focus();
+    return false;
+  } else {
+    msg.innerHTML = "";
+  }
   
-    // Validate input fields
-    if (validate_email(email) == false || validate_password(password) == false) {
-      alert('Email or Password is Outta Line!!')
-      return
-      // Don't continue running the code
-    }
-    if (validate_field(full_name) == false || validate_field(favourite_song) == false || validate_field(milk_before_cereal) == false) {
-      alert('One or More Extra Fields is Outta Line!!')
-      return
-    }
-   
-    // Move on with Auth
-    auth.createUserWithEmailAndPassword(email, password)
-    .then(function() {
-      // Declare user variable
-      var user = auth.currentUser
-  
-      // Add this user to Firebase Database
-      var database_ref = database.ref()
-  
-      // Create User data
-      var user_data = {
-        email : email,
-        full_name : full_name,
-        favourite_song : favourite_song,
-        milk_before_cereal : milk_before_cereal,
-        last_login : Date.now()
+   if (password.value == "") {
+    msg.innerHTML = "Please enter your password";
+    password.focus();
+    return false;
+  } else {
+    msg.innerHTML = "";
+  }
+   var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  if (!re.test(email.value)) {
+    msg.innerHTML = "Please enter a valid email";
+    email.focus();
+    return false;
+  } else {
+    msg.innerHTML = "";
+  }
+}
+
+// ParticlesJS
+
+// ParticlesJS Config.
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 60,
+      "density": {
+        "enable": true,
+        "value_area": 800
       }
-  
-      // Push to Firebase Database
-      database_ref.child('users/' + user.uid).set(user_data)
-  
-      // DOne
-      alert('User Created!!')
-    })
-    .catch(function(error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-  
-      alert(error_message)
-    })
-  }
-  
-  // Set up our login function
-  function login () {
-    // Get all our input fields
-    email = document.getElementById('email').value
-    password = document.getElementById('password').value
-  
-    // Validate input fields
-    if (validate_email(email) == false || validate_password(password) == false) {
-      alert('Email or Password is Outta Line!!')
-      return
-      // Don't continue running the code
-    }
-  
-    auth.signInWithEmailAndPassword(email, password)
-    .then(function() {
-      // Declare user variable
-      var user = auth.currentUser
-  
-      // Add this user to Firebase Database
-      var database_ref = database.ref()
-  
-      // Create User data
-      var user_data = {
-        last_login : Date.now()
+    },
+    "color": {
+      "value": "#ffffff"
+    },
+    "shape": {
+      "type": "circle",
+      "stroke": {
+        "width": 0,
+        "color": "#000000"
+      },
+      "polygon": {
+        "nb_sides": 5
+      },
+      "image": {
+        "src": "img/github.svg",
+        "width": 100,
+        "height": 100
       }
-  
-      // Push to Firebase Database
-      database_ref.child('users/' + user.uid).update(user_data)
-  
-      // DOne
-      alert('User Logged In!!')
-      locationObj = document.location
-      document.location = 'http://www.mozilla.org'
-  
-    })
-    .catch(function(error) {
-      // Firebase will use this to alert of its errors
-      var error_code = error.code
-      var error_message = error.message
-  
-      alert(error_message)
-    })
-  }
-  
-  
-  
-  
-  // Validate Functions
-  function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/
-    if (expression.test(email) == true) {
-      // Email is good
-      return true
-    } else {
-      // Email is not good
-      return false
+    },
+    "opacity": {
+      "value": 0.1,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 1,
+        "opacity_min": 0.1,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 6,
+      "random": false,
+      "anim": {
+        "enable": false,
+        "speed": 40,
+        "size_min": 0.1,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": true,
+      "distance": 150,
+      "color": "#ffffff",
+      "opacity": 0.1,
+      "width": 2
+    },
+    "move": {
+      "enable": true,
+      "speed": 1.5,
+      "direction": "top",
+      "random": false,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false,
+      "attract": {
+        "enable": false,
+        "rotateX": 600,
+        "rotateY": 1200
+      }
     }
-  }
-  
-  function validate_password(password) {
-    // Firebase only accepts lengths greater than 6
-    if (password < 6) {
-      return false
-    } else {
-      return true
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": {
+        "enable": false,
+        "mode": "repulse"
+      },
+      "onclick": {
+        "enable": false,
+        "mode": "push"
+      },
+      "resize": true
+    },
+    "modes": {
+      "grab": {
+        "distance": 400,
+        "line_linked": {
+          "opacity": 1
+        }
+      },
+      "bubble": {
+        "distance": 400,
+        "size": 40,
+        "duration": 2,
+        "opacity": 8,
+        "speed": 3
+      },
+      "repulse": {
+        "distance": 200,
+        "duration": 0.4
+      },
+      "push": {
+        "particles_nb": 4
+      },
+      "remove": {
+        "particles_nb": 2
+      }
     }
-  }
-  
-  function validate_field(field) {
-    if (field == null) {
-      return false
-    }
-  
-    if (field.length <= 0) {
-      return false
-    } else {
-      return true
-    }
-  }
+  },
+  "retina_detect": true
+});
