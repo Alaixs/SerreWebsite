@@ -7,35 +7,45 @@
      <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-  <script src="index.js"></script>
+
  <!-- particles.js container -->
 <div id="particles-js"></div>
-
 <!-- scripts -->
 <script src="js/particles.js"></script>
 <script src="js/app.js"></script>
 
 <body id="particles-js"></body>
 <div class="animated bounceInDown">
-  <div class="container">
+  <div id="login_div"class="container">
     <span class="error animated tada" id="msg"></span>
-    <form name="form1" class="box" onsubmit="return checkStuff()">
-      <h4>Serre<span>Connectée</span></h4>
+    <div name="form1" class="box" >
+      <h4>Serre<span></span></h4>
       <h5>Se connecter</h5>
-        <input type="text" name="email" placeholder="Email" autocomplete="off">
+        <input type="text" name="email" placeholder="Email" id="email" autocomplete="off">
         <i class="typcn typcn-eye" id="eye"></i>
-        <input type="password" name="password" placeholder="Passsword" id="pwd" autocomplete="off">
+        <input type="password" name="password" placeholder="Passsword" id="password" autocomplete="off">
         <label>
           <input type="checkbox">
           <span></span>
           <small class="rmb">Se souvenir de moi</small>
         </label>
         <a href="#" class="forgetpass">Mot de passe oublié?</a>
-        <input type="submit" value="Sign in" class="btn1">
-      </form>
+         <button onclick="login()">Login</button>
+      </div>
         <a href="/register.html" class="dnthave">Pas de compte? S'inscire ●</a>
   </div> 
 </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+   <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+
+    <!-- Our script must be loaded after firebase references -->
+    <script src="js/index.js"></script>
+
 </body>
    
 </html>
