@@ -51,7 +51,7 @@ function login () {
     database_ref.child('users/' + user.uid).update(user_data)
 
     // Done
-   window.location.href = "http://www.w3schools.com";
+    alert('User Logged In!!')
 
   })
   .catch(function(error) {
